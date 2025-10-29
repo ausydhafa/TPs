@@ -16,5 +16,44 @@ public class BurhanEkspress {
     System.out.print("\nMasukkan nama kamu: ");
     String nama = input.nextLine();
     System.out.println("Hallo, " + nama +"! Selamat datang di Burhan Ekspress!");
+    //Subtask2
+        boolean checkStatus = true;
+
+        while(checkStatus){
+            System.out.print("\nMasukkan status paket (Shipped, In Transit, Delivered): ");
+            String status = input.nextLine();
+            
+            if (status.equals("Shipped")){
+                System.out.println("Paket telah dikirim dan sedang dalam perjalanan.");
+            } else if (status.equals("In Transit")){
+                System.out.println("Paket Sedang dalam perjalanan");
+            } else if (status.equals("Delivered")){
+                System.out.println("Paket telah dampai di tujuan");
+            } else {
+                System.out.println("Status paket tidak valid");
+            }
+
+            boolean invalidInput = false;
+
+            System.out.print("Apakah ingin cek status paket lain? (yes/no): ");
+            String checkOther = input.nextLine();
+            
+            if (checkOther.equals("yes")){
+                checkStatus = true;
+            } else if (checkOther.equals("no")){
+                checkStatus = false;
+            } else {
+                invalidInput = true;
+
+                while (invalidInput){
+                    System.out.print("Input tidak valid. Silahkan masukkan 'yes' atau 'no':");
+                    String checkInput = input.nextLine();
+
+                    if (checkInput.equals("yes") || checkInput.equals("no")){
+                        invalidInput = false;
+                    }
+                }
+            }
+        }
     }
 }
