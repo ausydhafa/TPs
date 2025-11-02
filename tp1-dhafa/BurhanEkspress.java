@@ -16,45 +16,40 @@ public class BurhanEkspress {
     System.out.print("\nMasukkan nama kamu: ");
     String nama = input.nextLine();
     System.out.println("Hallo, " + nama +"! Selamat datang di Burhan Ekspress!\n");
-    //Subtask2
-        boolean checkStatus = true;
+    
+    //Subtask3
+        int jumlahShipped = 0;
+        int jumlahTransit = 0;
+        int jumlahDelivered = 0;
 
-        while(checkStatus){
-            System.out.print("Masukkan status paket (Shipped, In Transit, Delivered): ");
+        System.out.print("Berapa jumlah paket yang ingin dicek statusnya? ");
+            int jumlahPaket = Integer.parseInt(input.nextLine());
+
+        for (int i = 1; i < jumlahPaket + 1; i++){
+            System.out.print("Masukkan status paket " + i + " (Shipped, In Transit, Delivered): ");
             String status = input.nextLine();
-            
+
             if (status.equals("Shipped")){
-                System.out.println("Paket telah dikirim dan sedang dalam perjalanan.");
+                System.out.println("Paket " + i + " telah dikirim dan sedang dalam perjalanan.\n");
+                jumlahShipped++;
             } else if (status.equals("In Transit")){
-                System.out.println("Paket Sedang dalam perjalanan.");
+                System.out.println("Paket " + i + " sedang dalam perjalanan.\n");
+                jumlahTransit++;
             } else if (status.equals("Delivered")){
-                System.out.println("Paket telah dampai di tujuan.");
+                System.out.println("Paket "+ i +" telah sampai di tujuan.\n");
+                jumlahDelivered++;
             } else {
-                System.out.println("Status paket tidak valid");
+                i--;
+                System.out.println("Status paket tidak valid!\n");
             }
-
-            boolean invalidInput = false;
-
-            System.out.print("Apakah ingin cek status paket lain? (yes/no): ");
-            String checkOther = input.nextLine();
-            
-            if (checkOther.equals("yes")){
-                checkStatus = true;
-            } else if (checkOther.equals("no")){
-                checkStatus = false;
-            } else {
-                invalidInput = true;
-
-                while (invalidInput){
-                    System.out.print("Input tidak valid. Silahkan masukkan 'yes' atau 'no': ");
-                    String checkInput = input.nextLine();
-
-                    if (checkInput.equals("yes") || checkInput.equals("no")){
-                        invalidInput = false;
-                    }
-                }
-            }
-            System.out.println("Terima kasih telah menggunakan layanan Burhan Ekspress!");
         }
+        System.out.println("\n===== RINGKASAN STATUS PAKET =====");
+        System.out.println("Jumlah paket dengan status Shipped: " + jumlahShipped);
+        System.out.println("Jumlah paket dengan status In Transit: " + jumlahTransit);
+        System.out.println("Jumlah paket dengan status Delivered: " + jumlahDelivered);
+        System.out.println("Total paket yang dicek: " + jumlahPaket);
+        
+        System.out.println("\nTerima kasih telah menggunakan layanan Burhan Ekspress!");
     }
 }
+
